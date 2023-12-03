@@ -5,20 +5,24 @@ using UnityEngine;
 public class HatAnimation : MonoBehaviour
 {
     /// <summary>
-    /// Hat throw script
+    /// 回転させるオブジェクト
     /// </summary>
-    public HatThrow hatThrow;
+    public GameObject RotateObj;
 
-    private void Update()
+    public void Init()
     {
-        // Check if hat is thrown
-        if (hatThrow.isThrow == true)
-        {
-            // Get hat object transform
-            Transform trs = this.transform;
 
-            // Rotate hat object
-            trs.Rotate(0f, 1.0f, 0f);
-        }
+        // 初期化
+        // RotateObj = GameObject.Find("Hat");
+
+    }
+
+    public void Animation()
+    {
+        // オブジェクトのTransformを取得
+        Transform trs = RotateObj.transform;
+
+        // オブジェクトを回転させる
+        trs.Rotate(0f, 1.0f, 0f);
     }
 }

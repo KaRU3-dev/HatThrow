@@ -6,46 +6,53 @@ public class CameraController : MonoBehaviour
 {
     // Hat object
     public GameObject hat;
-    // Hat throw script
-    [SerializeField] private HatThrow hatThrow;
-    // Hat current speed
-    [SerializeField] private float hatSpeed;
     // Camera object
-    private GameObject cameraObj;
+    public GameObject cameraObj;
+    // Initial camera position
+    public Vector3 InitCameraPos = new Vector3(0f, 0.7f, -2f);
 
-    // Start is called before the first frame update
-    private void Start()
+    public void Init()
     {
-        // Initialize hat speed
-        hatSpeed = 0f;
-        cameraObj = this.gameObject;
+
+        // 初期化
+        InitLocalPos();
+
+    }
+
+    public void InitLocalPos()
+    {
+        // カメラの位置を初期化
+        cameraObj.transform.localPosition = InitCameraPos;
+    }
+
+    public void ReturnAction()
+    {
+        // カメラの位置を滑らかに戻す
+        cameraObj.transform.localPosition = Vector3.Lerp(
+            // Position A
+            cameraObj.transform.localPosition,
+            // Position B
+            InitCameraPos,
+            // Smooth time (percent of distance between A and B)
+            0.1f
+        );
     }
 
     // Update is called once per frame
-    private void Update()
+    public void Action()
     {
-        // Check if hat is thrown
-        if (hatThrow.isThrow == true)
-        {
-            // Get hat speed
-            hatSpeed = hat.GetComponent<Rigidbody>().velocity.magnitude;
-
-            // Move camera to backward direction
-            cameraObj.transform.Translate(0f, 0f, -hatSpeed * Time.deltaTime);
-
-            // Smooth move camera to backward direction (hat object pos - 5)
-            cameraObj.transform.position = Vector3.Lerp(
-                // Position A
-                cameraObj.transform.position,
-                // Position B
-                new Vector3(
-                    cameraObj.transform.position.x,
-                    cameraObj.transform.position.y,
-                    hat.transform.position.z - 5
-                ),
-                // Smooth time (percent of distance between A and B)
-                0.03f
-            );
-        }
+        // カメラの位置を変更（ポジションAとポジションBの間のA側からの10％後ろを追従）
+        cameraObj.transform.position = Vector3.Lerp(
+            // Position A
+            cameraObj.transform.position,
+            // Position B
+            new Vector3(
+                cameraObj.transform.position.x,
+                cameraObj.transform.position.y,
+                hat.transform.position.z - 5
+            ),
+            // Smooth time (percent of distance between A and B)
+            0.1f
+        );
     }
 }
