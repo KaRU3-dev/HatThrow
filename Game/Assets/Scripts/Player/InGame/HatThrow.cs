@@ -1,5 +1,13 @@
+/*
+ * Created by @KaRU3-dev
+ * Copyright (c) @KaRU3-dev All rights reserved
+ */
+
+// .NET Framework
 using System.Collections;
 using System.Collections.Generic;
+
+// Unity API
 using UnityEngine;
 
 public class HatThrow : MonoBehaviour, IHat
@@ -15,7 +23,7 @@ public class HatThrow : MonoBehaviour, IHat
     public HatAnimation HatAnimation {get; set;}
     public CameraController CameraController {get; set;}
 
-    private void Start()
+    public void Initialize()
     {
 
         // オブジェクトの値の初期化
@@ -37,7 +45,27 @@ public class HatThrow : MonoBehaviour, IHat
 
     }
 
-    private void Update()
+    public void Reset(GameObject InitPos)
+    {
+        IsThrow = false;
+        IsGround = false;
+        MouseStartPos = Vector3.zero;
+        MouseEndPos = Vector3.zero;
+
+        // 位置をリセット
+        transform.position = new Vector3(
+            InitPos.transform.position.x,
+            InitPos.transform.position.y + 3, // オブジェクトの沈み込みを考慮
+            InitPos.transform.position.z);
+
+        // 回転をリセット
+        transform.rotation = Quaternion.identity;
+
+        // デバッグログ
+        Debug.Log("Hat is reset");
+    }
+
+    public void Move()
     {
 
         // 投げる
