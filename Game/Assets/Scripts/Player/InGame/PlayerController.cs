@@ -42,14 +42,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // リセット
-        if (Input.GetKeyDown(KeyCode.Space))
+        // 地面にいるとき
+        if (HatThrow.IsGround)
         {
-            // ポジションをリセット
-            //HatThrow.transform.position = LaunchPosition.transform.position;
-            // 投げられたフラグなどをリセット
-            HatThrow.Reset(InitPos: LaunchPosition);
+            // リセット
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // ポジションをリセット
+                //HatThrow.transform.position = LaunchPosition.transform.position;
+                // 投げられたフラグなどをリセット
+                HatThrow.Reset(InitPos: LaunchPosition);
+            }
         }
+
         // プレイヤーのオブジェクトのスクリプトを更新
         HatThrow.Move();
     }

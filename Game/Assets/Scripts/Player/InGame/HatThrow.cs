@@ -61,6 +61,9 @@ public class HatThrow : MonoBehaviour, IHat
         // 回転をリセット
         transform.rotation = Quaternion.identity;
 
+        // Rigidbodyの速度をリセット
+        RootObjRb.velocity = Vector3.zero;
+
         // デバッグログ
         Debug.Log("Hat is reset");
     }
