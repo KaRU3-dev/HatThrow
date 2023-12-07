@@ -7,7 +7,7 @@ const port = 8000;
 
 // Methods
 // GET: tester
-const getter = require('./METHODS/GET/getter.js');
+const getter = require('./METHODS/GET/GET.js');
 
 // Server creation
 const server = http.createServer((req, res) => {

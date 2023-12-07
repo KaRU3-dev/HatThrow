@@ -1,7 +1,7 @@
 const http = require('http');
 
 // Responser
-const responser = require('./responcer.js');
+const responser = require('./get-responcer.js');
 
 // Get method
 module.exports = (req, res) => {
