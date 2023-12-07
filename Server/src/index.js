@@ -15,27 +15,6 @@ const server = http.createServer((req, res) => {
     // Call GET: tester
     getter(req, res);
 
-    // Check request url
-    // if (req.url === '/get/character' && req.method === 'GET'){
-    //     // Response header
-    //     res.writeHeader(200, { 'Content-type': 'application/json' });
-
-    //     // Response body
-    //     const userCharacter = {
-    //         name: 'Hat Game',
-    //     };
-
-    //     // Console log request url and status
-    //     console.log(req.url, res.statusCode);
-
-    //     // Convert to string and send response
-    //     res.end(JSON.stringify(userCharacter));
-    // }else{
-    //     // Response header
-    //     res.writeHead(404, { 'Content-Type': 'text/plain' });
-    //     // Response
-    //     res.end('Not Found');
-    // }
 });
 
 // Server start
