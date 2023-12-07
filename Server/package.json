@@ -1,0 +1,11 @@
+{
+  "name": "hat_throw_server",
+  "version": "0.0.1",
+  "description": "これは、進級制作展用のゲームのためのHTTP(API)サーバーです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Naofumi KaRU3 Okumura",
+  "license": "SEE LICENSE IN LICENSE"
+}
